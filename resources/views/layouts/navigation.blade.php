@@ -6,7 +6,6 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
@@ -15,6 +14,10 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                        <a href="{{ route('currencies.index') }}" 
+       class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300">
+        Manage Currencies
+    </a>
                 </div>
             </div>
 
