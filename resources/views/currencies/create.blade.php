@@ -34,7 +34,7 @@
 
                     <div class="flex justify-between">
                         <a href="{{ route('currencies.index') }}" class="px-4 py-2 bg-gray-500 text-white rounded">Cancel</a>
-                        <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded">Save</button>
+                        <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors duration-150">Save</button>
                     </div>
                 </form>
 

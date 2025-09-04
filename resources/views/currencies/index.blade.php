@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
 
-                    <a href="{{ route('currencies.create') }}" class="px-4 py-2 bg-blue-600 text-white rounded mb-3 inline-block">Add Currency</a>
+                    <a href="{{ route('currencies.create') }}" class="px-4 py-2 bg-green-600 text-white rounded mb-3 inline-block hover:bg-green-700 transition-colors duration-150">Add Currency</a>
 
                     @if(session('success'))
                         <div class="mb-3 p-2 bg-green-200 text-green-800 rounded">

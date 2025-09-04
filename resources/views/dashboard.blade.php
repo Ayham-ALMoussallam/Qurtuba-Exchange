@@ -6,8 +6,8 @@
             </h2>
 
             <!-- Button next to Dashboard title -->
-            <a href="{{ route('currencies.index') }}" 
-               class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300">
+            <a href="{{ route('currencies.index') }}"
+               class="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors duration-300">
                 Manage Currencies
             </a>
         </div>

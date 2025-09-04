@@ -6,18 +6,17 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
+                        <!-- Optional: Add logo here if needed -->
+                        <!-- <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-8 w-auto"> -->
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                        <a href="{{ route('currencies.index') }}" 
-       class="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors duration-300">
-        Manage Currencies
-    </a>
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center">
+                    <a href="{{ route('currencies.index') }}"
+                       class="px-3 py-2 text-gray-700 hover:text-gray-900 border-b-2 border-transparent hover:border-green-500 transition-all duration-150">
+                        Manage Currencies
+                    </a>
                 </div>
             </div>
 
@@ -44,7 +43,6 @@
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
-
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
                                                 this.closest('form').submit();">
@@ -70,9 +68,10 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
+            <a href="{{ route('currencies.index') }}"
+               class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 border-b-2 border-transparent hover:border-green-500 transition-all duration-150">
+                Manage Currencies
+            </a>
         </div>
 
         <!-- Responsive Settings Options -->
@@ -90,7 +89,6 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
