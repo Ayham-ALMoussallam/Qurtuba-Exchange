@@ -18,38 +18,72 @@
                         </div>
                     @endif
 
-                    <table class="min-w-full border-collapse border border-gray-300">
-                        <thead>
-                            <tr>
-                                <th class="border px-4 py-2">Code</th>
-                                <th class="border px-4 py-2">Name</th>
-                                <th class="border px-4 py-2">Buy Value</th>
-                                <th class="border px-4 py-2">Sell Value</th>
-                                <th class="border px-4 py-2">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($currencies as $currency)
-                                <tr>
-                                    <td class="border px-4 py-2">{{ $currency->code }}</td>
-                                    <td class="border px-4 py-2">{{ $currency->name }}</td>
-                                    <td class="border px-4 py-2">{{ $currency->buy_value }}</td>
-                                    <td class="border px-4 py-2">{{ $currency->sell_value }}</td>
-                                    <td class="border px-4 py-2">
-                                        <a href="{{ route('currencies.edit', $currency) }}" class="px-2 py-1 bg-yellow-500 text-white rounded">Edit</a>
-                                        <form action="{{ route('currencies.destroy', $currency) }}" method="POST" class="inline-block">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button onclick="return confirm('Delete this currency?')" class="px-2 py-1 bg-red-600 text-white rounded">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <div id="currencies-table">
+    <table class="min-w-full border-collapse border border-gray-300">
+        <thead>
+            <tr>
+                <th class="border px-4 py-2">Code</th>
+                <th class="border px-4 py-2">Name</th>
+                <th class="border px-4 py-2">Buy Value</th>
+                <th class="border px-4 py-2">Sell Value</th>
+                <th class="border px-4 py-2">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($currencies as $currency)
+                <tr>
+                    <td class="border px-4 py-2">{{ $currency->code }}</td>
+                    <td class="border px-4 py-2">{{ $currency->name }}</td>
+                    <td class="border px-4 py-2">{{ $currency->buy_value }}</td>
+                    <td class="border px-4 py-2">{{ $currency->sell_value }}</td>
+                    <td class="border px-4 py-2">
+                        <a href="{{ route('currencies.edit', $currency) }}" class="px-2 py-1 bg-yellow-500 text-white rounded">Edit</a>
+                        <form action="{{ route('currencies.destroy', $currency) }}" method="POST" class="inline-block">
+                            @csrf
+                            @method('DELETE')
+                            <button onclick="return confirm('Delete this currency?')" class="px-2 py-1 bg-red-600 text-white rounded">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
 
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+
+
+
+<script>
+    // Set refresh interval in milliseconds (e.g., 10000 = 10 seconds)
+    const refreshInterval = 5; 
+
+    async function refreshCurrencies() {
+        try {
+            const response = await fetch("{{ route('currencies.index') }}", {
+                headers: { "X-Requested-With": "XMLHttpRequest" }
+            });
+
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+
+            const newTable = doc.querySelector("#currencies-table");
+            if (newTable) {
+                document.querySelector("#currencies-table").innerHTML = newTable.innerHTML;
+            }
+        } catch (error) {
+            console.error("Failed to refresh currencies:", error);
+        }
+    }
+
+    // Start automatic refresh
+    setInterval(refreshCurrencies, refreshInterval);
+</script>
+
+
