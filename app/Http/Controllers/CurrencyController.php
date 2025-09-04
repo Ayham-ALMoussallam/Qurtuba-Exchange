@@ -81,4 +81,13 @@ class CurrencyController extends Controller
 
         return redirect()->route('currencies.index')->with('success', 'Currency deleted successfully.');
     }
+
+
+
+    public function publicIndex()
+{
+    $currencies = \App\Models\Currency::all();
+    return view('currencies.public', compact('currencies'));
+}
+
 }

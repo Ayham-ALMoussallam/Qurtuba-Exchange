@@ -25,4 +25,7 @@ Route::middleware(['auth', EnsureUserIsAdmin::class])->group(function () {
 });
 
 
+Route::get('/currencies-public', [CurrencyController::class, 'publicIndex'])->name('currencies.public');
+
+
 require __DIR__.'/auth.php';
