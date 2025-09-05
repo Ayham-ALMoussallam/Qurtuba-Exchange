@@ -30,5 +30,9 @@ Route::get('/currencies-public', [CurrencyController::class, 'publicIndex'])->na
 
 require __DIR__.'/auth.php';
 
-Route::get('/home', [\App\Http\Controllers\CurrencyController::class, 'publicIndex']);
+// routes/web.php
+Route::get('/api/currencies', function() {
+    return \App\Models\Currency::orderBy('id', 'desc')->get();
+})->name('currencies.api');
+
 
