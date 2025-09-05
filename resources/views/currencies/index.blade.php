@@ -61,7 +61,7 @@
 
 <script>
     // Set refresh interval in milliseconds (e.g., 10000 = 10 seconds)
-    const refreshInterval = 5; 
+    const refreshInterval = 10000; 
 
     async function refreshCurrencies() {
         try {
