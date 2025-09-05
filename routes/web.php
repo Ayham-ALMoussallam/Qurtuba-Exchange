@@ -29,3 +29,6 @@ Route::get('/currencies-public', [CurrencyController::class, 'publicIndex'])->na
 
 
 require __DIR__.'/auth.php';
+
+Route::get('/home', [\App\Http\Controllers\CurrencyController::class, 'publicIndex']);
+
